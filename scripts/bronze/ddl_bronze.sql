@@ -1,0 +1,73 @@
+/*
+===================================================================================
+DDL SCRIPT : CREATE BRONZE TABLE
+===================================================================================
+SCRIPT PURPOSE :
+          This script creates table in the bronze schema, dropping each of existing tables
+          if its already exixts in the schema.
+          Run this script to re-define the DDL structure of bronze table in POSTGREs.
+===================================================================================
+*/
+
+
+DROP TABLE IF EXISTS BRONZE.CRM_CUST_INFO;
+
+CREATE TABLE BRONZE.CRM_CUST_INFO (
+	CST_ID INT ,
+	CST_KEY VARCHAR(50),
+	CST_FIRSTNAME VARCHAR(50),
+	CST_LASTNAME VARCHAR(50),
+	CST_MARITAL_STATUS VARCHAR(50),
+	CST_GNDR VARCHAR(10),
+	CST_CREATE_DATE DATE
+);
+
+DROP TABLE IF EXISTS BRONZE.CRM_PRD_INFO;
+
+CREATE TABLE BRONZE.CRM_PRD_INFO (
+	PRD_ID INT,
+	PRD_KEY VARCHAR(50),
+	PRD_NM VARCHAR(50),
+	PRD_COST INT,
+	PRD_LINE VARCHAR(50),
+	PRD_START_DT DATE,
+	PRD_END_DT DATE
+);
+
+DROP TABLE IF EXISTS BRONZE.CRM_SALES_DETAILS;
+
+CREATE TABLE BRONZE.CRM_SALES_DETAILS (
+	SLS_ORD_NUM VARCHAR(50),
+	SLS_PRD_KEY VARCHAR(50),
+	SLS_CUST_ID INT,
+	SLS_ORDER_DT INT,
+	SLS_SHIP_DT INT,
+	SLS_DUE_DT INT,
+	SLS_SALES INT,
+	SLS_QUANTITY INT,
+	SLS_PRICE INT
+);
+
+DROP TABLE IF EXISTS BRONZE.ERP_CUST_AZ12;
+
+CREATE TABLE BRONZE.ERP_CUST_AZ12 (
+	CID VARCHAR(50), 
+	BDATE DATE, 
+	GEN VARCHAR(50)
+);
+
+DROP TABLE IF EXISTS BRONZE.ERP_LOC_A101;
+
+CREATE TABLE BRONZE.ERP_LOC_A101 (
+	CID VARCHAR(50), 
+	CNTRY VARCHAR(50)
+);
+
+DROP TABLE IF EXISTS BRONZE.ERP_PX_CAT_G1V2;
+
+CREATE TABLE BRONZE.ERP_PX_CAT_G1V2 (
+	ID VARCHAR(50),
+	CAT VARCHAR(50),
+	SUBCAT VARCHAR(50),
+	MAINTANCE VARCHAR(50)
+);
