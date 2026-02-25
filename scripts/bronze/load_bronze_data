@@ -1,0 +1,19 @@
+# Importing CSV Data into PostgreSQL
+
+This document explains how to load bulk data from a CSV file into a PostgreSQL table using pgAdmin's Import/Export feature.
+
+## Steps
+
+1. Open **pgAdmin** and connect to your database (`datawarehouse`).
+2. Right-click on the target table (e.g., `bronze.crm_cust_info`) → choose **Import/Export Data**.
+3. Configure the import:
+   - **File path**: `C:/Users/sql/datawarehouse_project/crm/cust_info.csv`(where you have save your data)
+   - **Format**: CSV
+   - **Delimiter**: `,`
+   - **Header**: Enabled (skip first row if column names are present)
+   - **Encoding**: UTF-8 (or WIN1252 if special characters appear incorrectly)
+4. Click **OK** to run the import.
+5. Verify the data:
+   ```sql
+   SELECT COUNT(*) FROM bronze.crm_cust_info; (This will provide you the number of rows in the table added)
+   SELECT * FROM bronze.crm_cust_info ;(This will provide you the table with their details)
